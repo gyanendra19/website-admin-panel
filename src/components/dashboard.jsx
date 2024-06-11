@@ -8,6 +8,7 @@ import { useFirebaseContext } from '../contexts/FirebaseContext'
 
 const Dashboard = () => {
     const {data, setData} = useFirebaseContext()
+
     useEffect(() => {
         onValue(ref(database, 'data'), (snapshot) => {
             if(snapshot !== null){
