@@ -4,10 +4,12 @@ import { onValue, ref } from 'firebase/database'
 import Sidebar from './Sidebar'
 import HomePage from './HomePage'
 import { useFirebaseContext } from '../contexts/FirebaseContext'
+import UsersPage from './UsersPage'
 
 
 const Dashboard = () => {
     const {data, setData} = useFirebaseContext()
+    const {page} = useFirebaseContext()
 
     useEffect(() => {
         onValue(ref(database, 'data'), (snapshot) => {
@@ -21,7 +23,10 @@ const Dashboard = () => {
   return (
     <>
     <Sidebar />
-    <HomePage />
+    {page === 'HomePage' ? <HomePage /> :
+    page === 'UsersPage' ? <UsersPage /> : ''
+    }
+   
     </>
   )
 }
