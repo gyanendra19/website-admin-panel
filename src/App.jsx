@@ -7,6 +7,7 @@ import { auth } from "./utils/firebaseConfig"
 
 function App() {
   const [data, setData] = useState({})
+  const [page, setPage] = useState('HomePage')
   console.log(data);
 
 
@@ -21,7 +22,7 @@ function App() {
 
   return (
     <>
-    <FirebaseContext.Provider value={{data, setData}}>
+    <FirebaseContext.Provider value={{data, setData, page, setPage}}>
       <RouterProvider router={route} />
     </FirebaseContext.Provider>
     </>
