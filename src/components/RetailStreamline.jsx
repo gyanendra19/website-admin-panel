@@ -4,36 +4,30 @@ import { onValue, ref, set } from 'firebase/database'
 import { database } from '../utils/firebaseConfig'
 
 
-const HomeLandingSec = ({data}) => {
-    const [main, setMain] = useState({})
+const RetailStreamline = ({data}) => {
+    const [retailStreamline, setRetailStreamline] = useState({})
     const [showSection, setShowSection] = useState(false)
 
     useEffect(() => {
-        onValue(ref(database, 'data/homePage/main'), (snapshot) => {
+        onValue(ref(database, 'data/retailPage/retailStreamline'), (snapshot) => {
             if(snapshot !== null){
-                setMain(snapshot.val())
+                setRetailStreamline(snapshot.val())
             }
         })
     }, [])
 
-    // useEffect(() => {
-    //     setLandingImage(main?.image)
-    //     setLandingTitle(main?.title)
-    //     setLandingPara(main?.para)
-    // }, [main])
-
-    // console.log(landingImage, landingPara, landingTitle, main);
 
     const updateText = (update, selector) => {
-        selector === 'title' && setMain(prev => ({...prev, title: update}))
-        selector === 'image' && setMain(prev => ({...prev, image: update}))
-        selector === 'para' && setMain(prev => ({...prev, para: update}))
-        selector === 'bg' && setMain(prev => ({...prev, bg: update}))
+        selector === 'title' && setRetailStreamline(prev => ({...prev, title: update}))
+        selector === 'image' && setRetailStreamline(prev => ({...prev, image: update}))
+        selector === 'para1' && setRetailStreamline(prev => ({...prev, para1: update}))
+        selector === 'para2' && setRetailStreamline(prev => ({...prev, para2: update}))
+        selector === 'bg' && setRetailStreamline(prev => ({...prev, bg: update}))
     }
 
     const writeUserData = () => {
         let success = false
-        set(ref(database, 'data/homePage/main'), main);
+        set(ref(database, 'data/retailPage/retailStreamline'), retailAi);
         success = true
         if(success) alert('Date Changed')
     }
@@ -42,11 +36,11 @@ const HomeLandingSec = ({data}) => {
 
   return (
     <Fragment>
-        <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>Landing Section <span><RiArrowRightSLine /></span></h1>
+        <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>Retail Streamline Section <span><RiArrowRightSLine /></span></h1>
         <div className={`${showSection ? '' : 'hidden'}`}>
-        {Object.keys(main).length !== 0 && Object.keys(main).map(key => (
+        {Object.keys(retailStreamline).length !== 0 && Object.keys(retailStreamline || {}).map(key => (
                 <>
-                    {Object.keys(main).length !== 0 && (
+                    {Object.keys(retailStreamline).length !== 0 && (
                         <div className={`flex flex-col gap-1`}>
                             <div className='flex flex-col gap-2'>
                                 <label className='font-medium' htmlFor={key}>{key}</label>
@@ -55,9 +49,9 @@ const HomeLandingSec = ({data}) => {
                                     className='w-[80%] border border-gray-200 rounded-sm px-3 h-[40px] focus:outline-none'
                                     type="text"
                                     id={key}
-                                    value={main[key] || ''} />
+                                    value={retailStreamline[key] || ''} />
                                     {key.startsWith('image') && (
-                                        <img className='w-44' src={main[key]} alt="" />
+                                        <img className='w-44' src={retailStreamline[key]} alt="" />
                                     )}
                             </div>
                         </div>
@@ -70,4 +64,4 @@ const HomeLandingSec = ({data}) => {
   )
 }
 
-export default HomeLandingSec
+export default RetailStreamline 
