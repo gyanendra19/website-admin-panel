@@ -3,30 +3,28 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { database } from '../utils/firebaseConfig'
 import { RiArrowRightSLine } from '@remixicon/react'
 
-const DemoAllUsers = () => {
+const DiningCompanion = () => {
     const [showSection, setShowSection] = useState(false)
-    const [demoAllUsers, setDemoAllUsers] = useState({})
+    const [diningCompanion, setDiningCompanion] = useState({})
 
     useEffect(() => {
-        onValue(ref(database, 'data/users/demo'), (snapshot) => {
+        onValue(ref(database, 'data/users/A Dining Companion'), (snapshot) => {
             if (snapshot !== null) {
-                setDemoAllUsers(snapshot.val())
+                setDiningCompanion(snapshot.val())
             }
         })
     }, [])
 
-    console.log(demoAllUsers);
 
     return (
         <Fragment>
-            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-semibold flex gap-1 items-center'>Users from Demo <span><RiArrowRightSLine /></span></h1>
-            {Object.keys(demoAllUsers || {}) !== 0 && Object.keys(demoAllUsers || {}).map(user => (
+            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-semibold flex gap-1 items-center'>Users from Dining Companion <span><RiArrowRightSLine /></span></h1>
+            {Object.keys(diningCompanion || {}) !== 0 && Object.keys(diningCompanion || {}).map(user => (
                 <>
                     <h1 className='text-xl font-medium'>{user}</h1>
-                    {console.log(user)}
-                    {Object.keys(demoAllUsers[user]).map(key => (
+                    {Object.keys(diningCompanion[user]).map(key => (
                         <>
-                            {Object.keys(demoAllUsers) !== 0 && (
+                            {Object.keys(diningCompanion) !== 0 && (
                                 <div className={`flex flex-col gap-1 ${showSection ? '' : 'hidden'}`}>
                                     <div className='flex flex-col gap-2'>
                                         <label className='font-medium' htmlFor={key}>{key}</label>
@@ -35,7 +33,7 @@ const DemoAllUsers = () => {
                                             className='w-[80%] border border-gray-200 rounded-sm px-3 h-[40px] focus:outline-none'
                                             type="text"
                                             id={key}
-                                            value={demoAllUsers[user][key] || ''} />
+                                            value={diningCompanion[user][key] || ''} />
                                     </div>
                                 </div>
                             )}
@@ -47,4 +45,4 @@ const DemoAllUsers = () => {
     )
 }
 
-export default DemoAllUsers
+export default DiningCompanion

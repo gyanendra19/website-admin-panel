@@ -1,43 +1,45 @@
-import { onValue, ref, set } from 'firebase/database'
 import React, { Fragment, useEffect, useState } from 'react'
-import { database } from '../utils/firebaseConfig'
 import { RiArrowRightSLine } from '@remixicon/react'
+import { onValue, ref, set } from 'firebase/database'
+import { database } from '../utils/firebaseConfig'
 
-const HomeGMTPlatform = () => {
+
+const RetailLandingSec = ({data}) => {
+    const [retailMain, setRetailMain] = useState({})
     const [showSection, setShowSection] = useState(false)
-    const [GMTPlatform, setGMTPlatform] = useState({})
 
     useEffect(() => {
-        onValue(ref(database, 'data/homePage/GMTPlatform'), (snapshot) => {
+        onValue(ref(database, 'data/retailPage/retailPageHero'), (snapshot) => {
             if(snapshot !== null){
-                setGMTPlatform(snapshot.val())
+                setRetailMain(snapshot.val())
             }
         })
     }, [])
 
-    const updateText = (update, selector) => {
-        selector === 'bg' && setGMTPlatform(prev => ({...prev, bg: update}))
-        selector === 'image' && setGMTPlatform(prev => ({...prev, image: update}))
-        selector === 'para1' && setGMTPlatform(prev => ({...prev, para1: update}))
-        selector === 'para2' && setGMTPlatform(prev => ({...prev, para2: update}))
-        selector === 'title' && setGMTPlatform(prev => ({...prev, title: update}))
-    }
 
+    const updateText = (update, selector) => {
+        selector === 'title' && setRetailMain(prev => ({...prev, title: update}))
+        selector === 'image' && setRetailMain(prev => ({...prev, image: update}))
+        selector === 'para' && setRetailMain(prev => ({...prev, para: update}))
+        selector === 'bg' && setRetailMain(prev => ({...prev, bg: update}))
+    }
 
     const writeUserData = () => {
         let success = false
-        set(ref(database, 'data/homePage/GMTPlatform'), GMTPlatform);
+        set(ref(database, 'data/retailPage/retailPageHero'), retailMain);
         success = true
         if(success) alert('Date Changed')
     }
 
+
+
   return (
     <Fragment>
-            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>GMTPlatform Section <span><RiArrowRightSLine /></span></h1>
-            <div className={`${showSection ? '' : 'hidden'}`}>
-            {Object.keys(GMTPlatform  || {}) !== 0 && Object.keys(GMTPlatform  || {}).map(key => (
+        <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>Retail Landing Section <span><RiArrowRightSLine /></span></h1>
+        <div className={`${showSection ? '' : 'hidden'}`}>
+        {Object.keys(retailMain  || {}) !== 0 && Object.keys(retailMain  || {}).map(key => (
                 <>
-                    {Object.keys(GMTPlatform) !== 0 && (
+                    {Object.keys(retailMain) !== 0 && (
                         <div className={`flex flex-col gap-1`}>
                             <div className='flex flex-col gap-2'>
                                 <label className='font-medium' htmlFor={key}>{key}</label>
@@ -46,9 +48,9 @@ const HomeGMTPlatform = () => {
                                     className='w-[80%] border border-gray-200 rounded-sm px-3 h-[40px] focus:outline-none'
                                     type="text"
                                     id={key}
-                                    value={GMTPlatform[key] || ''} />
+                                    value={retailMain[key] || ''} />
                                     {key.startsWith('image') && (
-                                        <img className='w-44' src={GMTPlatform[key]} alt="" />
+                                        <img className='w-44' src={retailMain[key]} alt="" />
                                     )}
                             </div>
                         </div>
@@ -56,9 +58,9 @@ const HomeGMTPlatform = () => {
                 </>
             ))}
             <button className='mt-4 px-3 py-1 bg-blue-400 rounded-md font-medium' onClick={() => writeUserData()}>Change</button>
-            </div>
-        </Fragment>
+        </div>
+    </Fragment>
   )
 }
 
-export default HomeGMTPlatform
+export default RetailLandingSec
