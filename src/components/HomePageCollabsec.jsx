@@ -25,7 +25,7 @@ const HomePageCollab = () => {
 
     const writeUserData = () => {
         let success = false
-        set(ref(database, 'data/homePage/homePageCollab'), homeCollab);
+        set(ref(database, 'data/homePage/homePageCollab'), homeCollab   );
         success = true
         if(success) alert('Date Changed')
     }
