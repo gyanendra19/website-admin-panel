@@ -1,7 +1,7 @@
 import { onValue, ref, set } from 'firebase/database'
 import React, { Fragment, useEffect, useState } from 'react'
 import { database } from '../utils/firebaseConfig'
-import { RiArrowRightSLine } from '@remixicon/react'
+import { RiArrowDownSLine, RiArrowRightSLine } from '@remixicon/react'
 
 const HomePageCollab = () => {
     const [showSection, setShowSection] = useState(false)
@@ -25,14 +25,14 @@ const HomePageCollab = () => {
 
     const writeUserData = () => {
         let success = false
-        set(ref(database, 'data/homePage/homePageCollab'), homeCollab);
+        set(ref(database, 'data/homePage/homePageCollab'), homeCollab   );
         success = true
         if(success) alert('Date Changed')
     }
 
   return (
     <Fragment>
-            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>Collab Section <span><RiArrowRightSLine /></span></h1>
+            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>Collab Section <span>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
             <div className={`${showSection ? '' : 'hidden'}`}>
             {Object.keys(homeCollab  || {}) !== 0 && Object.keys(homeCollab  || {}).map(key => (
                 <>

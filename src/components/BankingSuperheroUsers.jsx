@@ -1,7 +1,7 @@
 import { onValue, ref } from 'firebase/database'
 import React, { Fragment, useEffect, useState } from 'react'
 import { database } from '../utils/firebaseConfig'
-import { RiArrowRightSLine } from '@remixicon/react'
+import { RiArrowDownSLine, RiArrowRightSLine } from '@remixicon/react'
 
 const BankingSuperHero = () => {
     const [showSection, setShowSection] = useState(false)
@@ -18,7 +18,7 @@ const BankingSuperHero = () => {
 
     return (
         <Fragment>
-            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-semibold flex gap-1 items-center'>Users from Banking Superhero <span><RiArrowRightSLine /></span></h1>
+            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-semibold flex gap-1 items-center'>Users from Banking Superhero <span>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
             {Object.keys(bankingSuperheo || {}) !== 0 && Object.keys(bankingSuperheo || {}).map(user => (
                 <>
                     <h1 className='text-xl font-medium'>{user}</h1>

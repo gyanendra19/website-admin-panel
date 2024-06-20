@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { RiArrowRightSLine } from '@remixicon/react'
+import { RiArrowDownSLine, RiArrowRightSLine } from '@remixicon/react'
 import { onValue, ref, set } from 'firebase/database'
 import { database } from '../utils/firebaseConfig'
 
@@ -35,12 +35,12 @@ const RetailGenie = ({ data }) => {
     console.log(retailGenie);
     return (
         <Fragment>
-            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>Retail Genie Section <span><RiArrowRightSLine /></span></h1>
-            <div className={`${showSection ? '' : 'hidden'} `}>
+            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>Retail Genie Section <span>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
+            <div className={`${showSection ? '' : 'hidden'}`}>
                 {retailGenie?.length !== 0 && retailGenie.map((genie) => (
                     <>
                         {Object.keys(genie).length !== 0 && Object.keys(genie).map(key => (
-                                <div className={`flex flex-col gap-1`}>
+                                <div className={`flex flex-col gap-1 ${key === 'para' ? 'border-b-[3px] pb-6 border-blue-400' : ''}`}>
                                     <div className='flex flex-col gap-2'>
                                         <label className='font-medium mt-3' htmlFor={key}>{key}</label>
                                         <input
