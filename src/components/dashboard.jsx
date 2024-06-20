@@ -6,6 +6,7 @@ import HomePage from './HomePage'
 import { useFirebaseContext } from '../contexts/FirebaseContext'
 import UsersPage from './UsersPage'
 import RetailPage from './RetailPage'
+import FAQPage from './FAQPage'
 
 
 const Dashboard = () => {
@@ -26,7 +27,8 @@ const Dashboard = () => {
     <Sidebar />
     {page === 'HomePage' ? <HomePage /> :
     page === 'UsersPage' ? <UsersPage /> : 
-    page === 'RetailPage' ? <RetailPage /> : ''
+    page === 'RetailPage' ? <RetailPage /> : 
+    page === 'FAQPage' ? <FAQPage /> : ''
     }
    
     </>

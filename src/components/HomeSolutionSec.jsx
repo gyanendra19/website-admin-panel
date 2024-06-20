@@ -1,4 +1,4 @@
-import { RiArrowRightSLine } from '@remixicon/react'
+import { RiArrowDownSLine, RiArrowRightSLine } from '@remixicon/react'
 import { onValue, ref, set } from 'firebase/database'
 import React, { Fragment, useEffect, useState } from 'react'
 import { database } from '../utils/firebaseConfig'
@@ -37,7 +37,7 @@ const HomeSolutionSec = ({ data }) => {
 
     return (
         <Fragment>
-            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>Solution Section <span><RiArrowRightSLine /></span></h1>
+            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>Solution Section <span>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
             <div className={`${showSection ? '' : 'hidden'}`}>
                 {Object.keys(solutionData || {}) !== 0 && Object.keys(solutionData || {}).map(key => (
                     <>

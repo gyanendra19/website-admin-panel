@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { RiArrowRightSLine } from '@remixicon/react'
+import { RiArrowDownSLine, RiArrowRightSLine } from '@remixicon/react'
 import { onValue, ref, set } from 'firebase/database'
 import { database } from '../utils/firebaseConfig'
 
 
-const FAQs = ({ data }) => {
+const FAQs = () => {
     const [faq, setFaq] = useState([])
     const [showSection, setShowSection] = useState(false)
+    // const [faqID, setFaqID] = useState(null)
 
     useEffect(() => {
         onValue(ref(database, 'data/FAQPage/faqBox'), (snapshot) => {
@@ -17,34 +18,33 @@ const FAQs = ({ data }) => {
     }, [])
 
 
-    // const updateText = (update, selector) => {
-    //     selector === 'title' && setRetailMain(prev => ({...prev, title: update}))
-    //     selector === 'image' && setRetailMain(prev => ({...prev, image: update}))
-    //     selector === 'para' && setRetailMain(prev => ({...prev, para: update}))
-    //     selector === 'bg' && setRetailMain(prev => ({...prev, bg: update}))
-    // }
+    const updateText = (update, selector, id) => {
+        selector === 'ansPara1' && setFaq(prev => prev.map(faq => faq.id === id ? ({...faq, ansPara1: update}) : faq))
+        selector === 'ansPara2' && setFaq(prev => prev.map(faq => faq.id === id ? ({...faq, ansPara2: update}) : faq))
+        selector === 'question' && setFaq(prev => prev.map(faq => faq.id === id ? ({...faq, question: update}) : faq))
+    }
 
     const writeUserData = () => {
         let success = false
-        set(ref(database, 'data/retailPage/genieBox'), faq);
+        set(ref(database, 'data/FAQPage/faqBox'), faq);
         success = true
         if (success) alert('Date Changed')
     }
-
+console.log(faq);
 
     return (
         <Fragment>
-            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>FAQ's <span><RiArrowRightSLine /></span></h1>
+            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>FAQ's <span className='transition-all'>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
             <div className={`${showSection ? '' : 'hidden'} `}>
                 {faq?.length !== 0 && faq.map((question) => (
                     <>
                         {Object.keys(question).length !== 0 && Object.keys(question).map(key => (
-                                <div className={`flex flex-col gap-1`}>
-                                    <div className='flex flex-col gap-2'>
+                                <div className={`flex flex-col gap-1 mb-2`}>
+                                    <div className={`flex flex-col gap-2`}>
                                         <label className='font-medium mt-3' htmlFor={key}>{key}</label>
                                         <input
-                                            // onChange={(e) => updateText(e.target.value, key)}
-                                            className='w-[80%] border border-gray-200 rounded-sm px-3 h-[40px] focus:outline-none'
+                                            onChange={(e) => updateText(e.target.value, key, question.id)}
+                                            className={`w-[80%] border border-gray-200 rounded-sm px-3 h-[40px] focus:outline-none`}
                                             type="text"
                                             id={key}
                                             value={question[key] || ''} />
@@ -54,9 +54,9 @@ const FAQs = ({ data }) => {
                                     </div>
                                 </div> 
                         ))}
+                <button className='mt-4 px-3 py-1 bg-blue-400 rounded-md font-medium' onClick={() => writeUserData()}>Change</button>
                     </>
                 ))}
-                <button className='mt-4 px-3 py-1 bg-blue-400 rounded-md font-medium' onClick={() => writeUserData()}>Change</button>
             </div>
         </Fragment>
     )

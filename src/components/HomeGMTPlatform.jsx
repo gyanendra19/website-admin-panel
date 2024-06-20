@@ -1,7 +1,7 @@
 import { onValue, ref, set } from 'firebase/database'
 import React, { Fragment, useEffect, useState } from 'react'
 import { database } from '../utils/firebaseConfig'
-import { RiArrowRightSLine } from '@remixicon/react'
+import { RiArrowDownSLine, RiArrowRightSLine } from '@remixicon/react'
 
 const HomeGMTPlatform = () => {
     const [showSection, setShowSection] = useState(false)
@@ -33,14 +33,14 @@ const HomeGMTPlatform = () => {
 
   return (
     <Fragment>
-            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>GMTPlatform Section <span><RiArrowRightSLine /></span></h1>
+            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-medium flex gap-1 items-center'>GMTPlatform Section <span>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
             <div className={`${showSection ? '' : 'hidden'}`}>
             {Object.keys(GMTPlatform  || {}) !== 0 && Object.keys(GMTPlatform  || {}).map(key => (
                 <>
                     {Object.keys(GMTPlatform) !== 0 && (
                         <div className={`flex flex-col gap-1`}>
                             <div className='flex flex-col gap-2'>
-                                <label className='font-medium' htmlFor={key}>{key}</label>
+                                <label className='font-medium mt-2' htmlFor={key}>{key}</label>
                                 <input
                                     onChange={(e) => updateText(e.target.value, key)}
                                     className='w-[80%] border border-gray-200 rounded-sm px-3 h-[40px] focus:outline-none'

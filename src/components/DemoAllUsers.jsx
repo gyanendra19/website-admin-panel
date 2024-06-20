@@ -1,7 +1,7 @@
 import { onValue, ref } from 'firebase/database'
 import React, { Fragment, useEffect, useState } from 'react'
 import { database } from '../utils/firebaseConfig'
-import { RiArrowRightSLine } from '@remixicon/react'
+import { RiArrowDownSLine, RiArrowRightSLine } from '@remixicon/react'
 
 const DemoAllUsers = () => {
     const [showSection, setShowSection] = useState(false)
@@ -15,11 +15,10 @@ const DemoAllUsers = () => {
         })
     }, [])
 
-    console.log(demoAllUsers);
 
     return (
         <Fragment>
-            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-semibold flex gap-1 items-center'>Users from Demo <span><RiArrowRightSLine /></span></h1>
+            <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-semibold flex gap-1 items-center'>Users from Demo <span>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
             {Object.keys(demoAllUsers || {}) !== 0 && Object.keys(demoAllUsers || {}).map(user => (
                 <>
                     <h1 className='text-xl font-medium'>{user}</h1>
