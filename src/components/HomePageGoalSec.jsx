@@ -47,7 +47,7 @@ const HomePageGoal = () => {
                                 type="text"
                                 id={key}
                                 value={homeGoal[key] || ''} />
-                            {key.startsWith('image') && (
+                            {key.startsWith('image') || key.startsWith('bg') && (
                                 <img className='w-44' src={homeGoal[key]} alt="" />
                             )}
                         </div>

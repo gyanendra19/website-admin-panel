@@ -47,7 +47,7 @@ const HomeGMTPlatform = () => {
                                     type="text"
                                     id={key}
                                     value={GMTPlatform[key] || ''} />
-                                    {key.startsWith('image') && (
+                                    {key.startsWith('image') || key.startsWith('bg') && (
                                         <img className='w-44' src={GMTPlatform[key]} alt="" />
                                     )}
                             </div>

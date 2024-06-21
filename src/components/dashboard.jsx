@@ -8,6 +8,8 @@ import UsersPage from '../Pages/UsersPage'
 import FAQPage from '../Pages/FAQPage'
 import RetailPage from '../Pages/RetailPage'
 import ProductPage from '../Pages/ProductPage'
+import ContactPage from '../Pages/ContactPage'
+import AboutPage from '../Pages/AboutusPage'
 
 const Dashboard = () => {
     const {data, setData} = useFirebaseContext()
@@ -29,7 +31,8 @@ const Dashboard = () => {
     page === 'UsersPage' ? <UsersPage /> : 
     page === 'RetailPage' ? <RetailPage /> : 
     page === 'FAQPage' ? <FAQPage /> : 
-    page === 'ProductPage' ? <ProductPage /> : ''
+    page === 'ProductPage' ? <ProductPage /> : 
+    page === 'ContactPage' ? <ContactPage /> : <AboutPage />
      }
    
     </>

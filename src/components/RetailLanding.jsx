@@ -48,7 +48,7 @@ const RetailLandingSec = ({data}) => {
                                     type="text"
                                     id={key}
                                     value={retailMain[key] || ''} />
-                                    {key.startsWith('image') && (
+                                    {key.startsWith('image') || key.startsWith('bg') && (
                                         <img className='w-44' src={retailMain[key]} alt="" />
                                     )}
                             </div>

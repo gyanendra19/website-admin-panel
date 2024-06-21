@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import FirstProduct from '../components/FirstProduct'
 import Product from '../utils/Product'
 
 const ProductPage = () => {

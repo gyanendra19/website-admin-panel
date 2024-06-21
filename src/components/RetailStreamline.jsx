@@ -50,7 +50,7 @@ const RetailStreamline = ({data}) => {
                                     type="text"
                                     id={key}
                                     value={retailStreamline[key] || ''} />
-                                    {key.startsWith('image') && (
+                                    {key.startsWith('image') || key.startsWith('bg') && (
                                         <img className='w-44' src={retailStreamline[key]} alt="" />
                                     )}
                             </div>
