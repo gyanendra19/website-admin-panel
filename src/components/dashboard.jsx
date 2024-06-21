@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { database } from '../utils/firebaseConfig'
 import { onValue, ref } from 'firebase/database'
 import Sidebar from './Sidebar'
-import HomePage from './HomePage'
+import HomePage from '../Pages/HomePage'
 import { useFirebaseContext } from '../contexts/FirebaseContext'
-import UsersPage from './UsersPage'
-import RetailPage from './RetailPage'
-import FAQPage from './FAQPage'
-
+import UsersPage from '../Pages/UsersPage'
+import FAQPage from '../Pages/FAQPage'
+import RetailPage from '../Pages/RetailPage'
+import ProductPage from '../Pages/ProductPage'
 
 const Dashboard = () => {
     const {data, setData} = useFirebaseContext()
@@ -28,8 +28,9 @@ const Dashboard = () => {
     {page === 'HomePage' ? <HomePage /> :
     page === 'UsersPage' ? <UsersPage /> : 
     page === 'RetailPage' ? <RetailPage /> : 
-    page === 'FAQPage' ? <FAQPage /> : ''
-    }
+    page === 'FAQPage' ? <FAQPage /> : 
+    page === 'ProductPage' ? <ProductPage /> : ''
+     }
    
     </>
   )

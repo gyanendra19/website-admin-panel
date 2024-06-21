@@ -13,6 +13,7 @@ const Sidebar = () => {
             <span onClick={() => setPage('RetailPage')} className='tracking-wider cursor-pointer'>Retail Page</span>
             <span onClick={() => setPage('FAQPage')} className='tracking-wider cursor-pointer'>FAQ Page</span>
             <span onClick={() => setPage('UsersPage')} className='tracking-wider cursor-pointer'>Users Page</span>
+            <span onClick={() => setPage('ProductPage')} className='tracking-wider cursor-pointer'>Product Page</span>
         </div>
    </section>
   )

@@ -1,9 +1,9 @@
 import React from 'react'
-import RetailLandingSec from './RetailLanding'
-import RetailGenie from './RetailGenie'
-import RetailAssistant from './RetailAssistant'
-import RetailPageAi from './RetailPageAi'
-import RetailStreamline from './RetailStreamline'
+import RetailLandingSec from '../components/RetailLanding'
+import RetailGenie from '../components/RetailGenie'
+import RetailAssistant from '../components/RetailAssistant'
+import RetailPageAi from '../components/RetailPageAi'
+import RetailStreamline from '../components/RetailStreamline'
 
 const RetailPage = () => {
     return (
