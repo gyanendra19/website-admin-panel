@@ -11,7 +11,9 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const credentials = await signInWithEmailAndPassword(auth, email, password);
+      const user = credentials.user;
+      localStorage.setItem('token', user.accessToken)
      navigate('/dashboard')
      alert('Welcome to Arcsale Dashboard')
     } catch (error) {
@@ -19,7 +21,7 @@ const Login = () => {
       console.error("Error logging in: ", error);
     }
   };
-
+  console.log(auth);
   return (
     <div className='w-full h-screen flex justify-center items-center'>
       <div className='flex flex-col w-[30%] shadow-xl p-4 gap-6'>

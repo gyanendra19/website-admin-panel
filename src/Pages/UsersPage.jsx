@@ -1,8 +1,8 @@
 import React from 'react'
-import DemoAllUsers from './DemoAllUsers'
-import BankingSuperHero from './BankingSuperheroUsers'
-import HospitalityConcierge from './HospitalityConcierge'
-import DiningCompanion from './DiningCompanion'
+import DemoAllUsers from '../components/DemoAllUsers'
+import BankingSuperHero from '../components/BankingSuperheroUsers'
+import HospitalityConcierge from '../components/HospitalityConcierge'
+import DiningCompanion from '../components/DiningCompanion'
 
 const UsersPage = () => {
   return (

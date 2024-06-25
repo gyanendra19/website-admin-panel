@@ -56,7 +56,7 @@ const HomeLandingSec = ({data}) => {
                                     type="text"
                                     id={key}
                                     value={main[key] || ''} />
-                                    {key.startsWith('image') && (
+                                    {key.startsWith('image') || key.startsWith('bg') && (
                                         <img className='w-44' src={main[key]} alt="" />
                                     )}
                             </div>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useFirebaseContext } from '../contexts/FirebaseContext'
-import HomeLandingSec from './HomeLandingSec'
-import HomeSolutionSec from './HomeSolutionSec'
-import HomeGMTPlatform from './HomeGMTPlatform'
-import HomePageGoal from './HomePageGoalSec'
-import HomePageCollab from './HomePageCollabsec'
+import HomeLandingSec from '../components/HomeLandingSec'
+import HomeSolutionSec from '../components/HomeSolutionSec'
+import HomeGMTPlatform from '../components/HomeGMTPlatform'
+import HomePageGoal from '../components/HomePageGoalSec'
+import HomePageCollab from '../components/HomePageCollabsec'
 
 
 const HomePage = () => {

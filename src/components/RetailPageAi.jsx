@@ -49,7 +49,7 @@ const RetailPageAi = ({data}) => {
                                     type="text"
                                     id={key}
                                     value={retailAi[key] || ''} />
-                                    {key.startsWith('image') && (
+                                    {key.startsWith('image') || key.startsWith('bg') && (
                                         <img className='w-44' src={retailAi[key]} alt="" />
                                     )}
                             </div>
