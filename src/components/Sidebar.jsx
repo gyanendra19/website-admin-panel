@@ -22,6 +22,7 @@ const Sidebar = () => {
             <span onClick={() => setPage('ProductPage')} className='tracking-wider cursor-pointer'>Product Page</span>
             <span onClick={() => setPage('UsersPage')} className='tracking-wider cursor-pointer'>Users Page</span>
             <span onClick={() => setPage('FAQPage')} className='tracking-wider cursor-pointer'>FAQ Page</span>
+            <span onClick={() => setPage('BlogPage')} className='tracking-wider cursor-pointer'>Blog Page</span>
             <span onClick={() => setPage('ContactPage')} className='tracking-wider cursor-pointer'>Contact Page</span>
             <span onClick={() => setPage('AboutPage')} className='tracking-wider cursor-pointer'>About Us Page</span>
             <button onClick={() => userlogout()} className='px-4 py-2 rounded-md font-medium bg-white mt-3 w-[100px] text-black'>Logout</button>
