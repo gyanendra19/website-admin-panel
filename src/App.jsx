@@ -11,14 +11,13 @@ import Protected from "./Protected"
 function App() {
   const [data, setData] = useState({})
   const [page, setPage] = useState('HomePage')
-  console.log(data);
 
 
   const route = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route path="" element={<Layout />}>
-          <Route path="/login" element={<Login />} />
+          <Route path="" element={<Login />} />
           <Route path="" element ={<Protected />}>
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
