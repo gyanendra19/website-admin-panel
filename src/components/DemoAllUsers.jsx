@@ -21,7 +21,7 @@ const DemoAllUsers = () => {
             <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-semibold flex gap-1 items-center'>Users from Demo <span>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
             {Object.keys(demoAllUsers || {}) !== 0 && Object.keys(demoAllUsers || {}).map(user => (
                 <>
-                    <h1 className='text-xl font-medium'>{user}</h1>
+                    <h1 className={`text-xl font-medium ${showSection ? 'bg-amber-400 px-2 py-1 rounded-md w-fit' : ''}`}>{user}</h1>
                     {console.log(user)}
                     {Object.keys(demoAllUsers[user]).map(key => (
                         <>

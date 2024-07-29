@@ -21,7 +21,7 @@ const BankingSuperHero = () => {
             <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-semibold flex gap-1 items-center'>Users from Banking Superhero <span>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
             {Object.keys(bankingSuperheo || {}) !== 0 && Object.keys(bankingSuperheo || {}).map(user => (
                 <>
-                    <h1 className='text-xl font-medium'>{user}</h1>
+                    <h1 className={`text-xl font-medium ${showSection ? 'bg-amber-400 px-2 py-1 rounded-md w-fit' : ''}`}>{user}</h1>
                     {console.log(user)}
                     {Object.keys(bankingSuperheo[user]).map(key => (
                         <>
