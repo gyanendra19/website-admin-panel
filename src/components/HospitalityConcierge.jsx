@@ -5,7 +5,7 @@ import { RiArrowDownSLine, RiArrowRightSLine } from '@remixicon/react'
 
 const HospitalityConcierge = () => {
     const [showSection, setShowSection] = useState(false)
-    const [HospitalityConcierge, setHospitalityConcierge] = useState({})
+    const [hospitalityConcierge, setHospitalityConcierge] = useState({})
 
     useEffect(() => {
         onValue(ref(database, 'data/users/A Hospitality Concierge'), (snapshot) => {
@@ -14,18 +14,18 @@ const HospitalityConcierge = () => {
             }
         })
     }, [])
+    console.log(hospitalityConcierge);
 
 
     return (
         <Fragment>
             <h1 onClick={() => setShowSection(prev => !prev)} className='text-xl font-semibold flex gap-1 items-center'>Users from Hospitality Concierge <span>{showSection ? <RiArrowDownSLine /> : <RiArrowRightSLine />}</span></h1>
-            {Object.keys(HospitalityConcierge || {}) !== 0 && Object.keys(HospitalityConcierge || {}).map(user => (
+            {Object.keys(hospitalityConcierge || {}) !== 0 && Object.keys(hospitalityConcierge || {}).map(user => (
                 <>
-                    <h1 className='text-xl font-medium'>{user}</h1>
-                    {console.log(user)}
-                    {Object.keys(HospitalityConcierge[user]).map(key => (
+                    <h1 className={`text-xl font-medium ${showSection ? 'bg-amber-400 px-2 py-1 rounded-md w-fit' : ''}`}>{user}</h1>
+                    {Object.keys(hospitalityConcierge[user]).map(key => (
                         <>
-                            {Object.keys(HospitalityConcierge) !== 0 && (
+                            {Object.keys(hospitalityConcierge) !== 0 && (
                                 <div className={`flex flex-col gap-1 ${showSection ? '' : 'hidden'}`}>
                                     <div className='flex flex-col gap-2'>
                                         <label className='font-medium mt-2' htmlFor={key}>{key}</label>
@@ -34,7 +34,7 @@ const HospitalityConcierge = () => {
                                             className='w-[80%] border border-gray-200 rounded-sm px-3 h-[40px] focus:outline-none'
                                             type="text"
                                             id={key}
-                                            value={HospitalityConcierge[user][key] || ''} />
+                                            value={hospitalityConcierge[user][key] || ''} />
                                     </div>
                                 </div>
                             )}
