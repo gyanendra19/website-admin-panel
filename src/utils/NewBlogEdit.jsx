@@ -37,6 +37,7 @@ const NewBlogEdit = ({ setBlogs }) => {
                 updatedBlogs = [...prev, blogWithId];
             }
             set(ref(database, 'data/Blogs/allBlogs'), updatedBlogs);
+            alert('New Blog Added')
             return updatedBlogs;
         });
         
