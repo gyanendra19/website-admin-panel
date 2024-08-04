@@ -8,3 +8,22 @@ html, body{
     width: 100%;
     font-family: 'Montserrat', 'sans-serif';
 }
+
+/* .mde-tabs button:first-child{
+    padding: 8px;
+} */
+
+.mde-tabs button{
+    padding: 8px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.react-mde .mde-textarea-wrapper .mde-text{
+    min-height: 500px; /* Ensure a minimum height */
+    overflow-y: auto; /* Add scroll if content exceeds max-height */
+  }
+
+.remove-scroll::-webkit-scrollbar{
+    display: none;
+}
